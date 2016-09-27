@@ -34,7 +34,7 @@
  $sentdata = [ 'value1' => $answer ];
  
  
- // This part sends a tweet to @FRCBotAlerts on twitter I am doing it with IFTTT beacause it is simpler!
+ // This part sends a tweet to @FRCBotAlerts on twitter I am doing it with IFTTT because it is simpler!
  $ch = curl_init('https://maker.ifttt.com/trigger/tweetnotif/with/key/(ifttt private key)');
 curl_setopt($ch, CURLOPT_POST, 1);
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($sentdata));
