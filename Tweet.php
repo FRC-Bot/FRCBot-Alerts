@@ -1,4 +1,4 @@
-key<?php
+<?php
  
  // This part receive Json match informations from a TheBlueAlliance Webhook and save it in a text variable
  $input = @file_get_contents("php://input");
