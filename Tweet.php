@@ -14,16 +14,16 @@
  $setnb = $jsoninput->{'message_data'}->{'match'}->{'set_number'}; // Gets the number of the match
  
  //blue
- $scoreblue = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'blue'}->{'score'}; Gets the score for blue
- $bluet1 = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'blue'}->{'teams'}[0]; Gets the team numbers in this alliance
- $bluet2 = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'blue'}->{'teams'}[1]; Gets the team numbers in this alliance
- $bluet3 = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'blue'}->{'teams'}[2]; Gets the team numbers in this alliance
+ $scoreblue = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'blue'}->{'score'}; // Gets the score for blue
+ $bluet1 = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'blue'}->{'teams'}[0]; // Gets the team numbers in this alliance
+ $bluet2 = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'blue'}->{'teams'}[1]; // Gets the team numbers in this alliance
+ $bluet3 = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'blue'}->{'teams'}[2]; // Gets the team numbers in this alliance
  
  //red
- $scorered = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'red'}->{'score'}; Gets the score for red
- $redt1 = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'red'}->{'teams'}[0]; Gets the team numbers in this alliance
- $redt2 = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'red'}->{'teams'}[1]; Gets the team numbers in this alliance
- $redt3 = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'red'}->{'teams'}[2]; Gets the team numbers in this alliance
+ $scorered = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'red'}->{'score'}; // Gets the score for red
+ $redt1 = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'red'}->{'teams'}[0]; // Gets the team numbers in this alliance
+ $redt2 = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'red'}->{'teams'}[1]; // Gets the team numbers in this alliance
+ $redt3 = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'red'}->{'teams'}[2]; // Gets the team numbers in this alliance
  
  //Write the text that will be tweeted
  $answer =  "Match result for #{$evkey} {$complvl}{$setnb}m{$matchnb}. Score Blue: {$scoreblue}pts by {$bluet1}, {$bluet2} and {$bluet3}. Red: {$scorered}pts by {$redt1}, {$redt2} and {$redt3}";
