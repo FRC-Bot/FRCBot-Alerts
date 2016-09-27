@@ -7,7 +7,10 @@
 // decode from json to table
  $jsoninput = json_decode($input);
 
- //$type = $jsoninput->{'message_type'}; // Make sure this webhook is about a match_score
+ $type = $jsoninput->{'message_type'}; // Make sure this webhook is about a match_score
+
+if ($type == 'match_score') { // if it is a match score then tweet it
+ 
  $evkey = $jsoninput->{'message_data'}->{'match'}->{'event_key'}; // Gets the event key
  $complvl = $jsoninput->{'message_data'}->{'match'}->{'comp_level'}; // Gets the competition level EX: Q, F, ...
  $matchnb = $jsoninput->{'message_data'}->{'match'}->{'match_number'}; // Gets the match number
@@ -41,4 +44,6 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($sentdata));
 curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
 curl_exec($ch);
 curl_close($ch);
+ 
+ }
 ?>
