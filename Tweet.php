@@ -1,4 +1,4 @@
-<?php
+key<?php
  
  // This part receive Json match informations from a TheBlueAlliance Webhook and save it in a text variable
  $input = @file_get_contents("php://input");
@@ -18,15 +18,26 @@ if ($type == 'match_score') { // if it is a match score then tweet it
  
  //blue
  $scoreblue = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'blue'}->{'score'}; // Gets the score for blue
- $bluet1 = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'blue'}->{'teams'}[0]; // Gets the team numbers in this alliance
- $bluet2 = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'blue'}->{'teams'}[1]; // Gets the team numbers in this alliance
- $bluet3 = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'blue'}->{'teams'}[2]; // Gets the team numbers in this alliance
+ $bluet1key = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'blue'}->{'teams'}[0]; // Gets the team numbers in this alliance
+ $bluet2key = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'blue'}->{'teams'}[1]; // Gets the team numbers in this alliance
+ $bluet3key = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'blue'}->{'teams'}[2]; // Gets the team numbers in this alliance
+ //Convert Team key into team number
+ $bluet1 = filter_var($bluet1key, FILTER_SANITIZE_NUMBER_INT);
+ $bluet2 = filter_var($bluet2key, FILTER_SANITIZE_NUMBER_INT);
+ $bluet3 = filter_var($bluet3key, FILTER_SANITIZE_NUMBER_INT);
+ 
  
  //red
  $scorered = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'red'}->{'score'}; // Gets the score for red
- $redt1 = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'red'}->{'teams'}[0]; // Gets the team numbers in this alliance
- $redt2 = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'red'}->{'teams'}[1]; // Gets the team numbers in this alliance
- $redt3 = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'red'}->{'teams'}[2]; // Gets the team numbers in this alliance
+ $redt1key = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'red'}->{'teams'}[0]; // Gets the team numbers in this alliance
+ $redt2key = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'red'}->{'teams'}[1]; // Gets the team numbers in this alliance
+ $redt3key = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'red'}->{'teams'}[2]; // Gets the team numbers in this alliance
+ //Convert Team key into team number
+ $redt1 = filter_var($redt1key, FILTER_SANITIZE_NUMBER_INT);
+ $redt2 = filter_var($redt2key, FILTER_SANITIZE_NUMBER_INT);
+ $redt3 = filter_var($redt3key, FILTER_SANITIZE_NUMBER_INT);
+ 
+ 
  
  //Write the text that will be tweeted
  $answer =  "Match result for #{$evkey} {$complvl}{$setnb}m{$matchnb}. Score Blue: {$scoreblue}pts by {$bluet1}, {$bluet2} and {$bluet3}. Red: {$scorered}pts by {$redt1}, {$redt2} and {$redt3}";
