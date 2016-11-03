@@ -16,7 +16,7 @@ if ($type == 'match_score') { // if it is a match score then tweet it
  $matchnb = $jsoninput->{'message_data'}->{'match'}->{'match_number'}; // Gets the match number
  $setnb = $jsoninput->{'message_data'}->{'match'}->{'set_number'}; // Gets the number of the match
  $matchkey = $jsoninput->{'message_data'}->{'match'}->{'key'}; // Gets the match key
- $matchontba = "http://www.thebluealliance.com/match/{$matchkey}";
+ $resultsimage = "http://frcbot.com/chatbot/matchresultsimg/pre2016matchresult.php?matchid={$matchkey}";
  
  //blue
  $scoreblue = $jsoninput->{'message_data'}->{'match'}->{'alliances'}->{'blue'}->{'score'}; // Gets the score for blue
@@ -42,12 +42,12 @@ if ($type == 'match_score') { // if it is a match score then tweet it
  
  
  //Write the text that will be tweeted
- $answer =  "Match result for #{$evkey} {$complvl}{$setnb}m{$matchnb}. Score Blue: {$scoreblue}pts by {$bluet1}, {$bluet2} and {$bluet3}. Red: {$scorered}pts by {$redt1}, {$redt2} and {$redt3} {$matchontba}";
+ $answer =  "Match result for #{$evkey} {$complvl}{$setnb}m{$matchnb}. Blue: {$bluet1}, {$bluet2} and {$bluet3}. Red: {$redt1}, {$redt2} and {$redt3}";
  
  error_log($answer); // Dump the answer in the error log. 
 
  
- $sentdata = [ 'value1' => $answer ];
+ $sentdata = [ 'value1' => $answer, 'value2' => $resultsimage ];
  
  
  // This part sends a tweet to @FRCBotAlerts on twitter I am doing it with IFTTT because it is simpler!
